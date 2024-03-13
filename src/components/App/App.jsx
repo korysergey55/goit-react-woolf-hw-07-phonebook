@@ -5,7 +5,10 @@ import { getFilteredContacts } from 'redax/selectors/selectors';
 import ContactForm from '../contactForm/ContactForm';
 import ContactList from 'components/contactList/ContactList';
 import Filter from 'components/filter/Filter';
-
+// import { getContactsAPI, createContactAPI, deleteContactAPI } from 'api/api';
+// createContactAPI()
+// deleteContactAPI('4')
+// getContactsAPI()
 const App = () => {
   const filteredContacts = useSelector(getFilteredContacts)
 
