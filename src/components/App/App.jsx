@@ -11,6 +11,7 @@ import Filter from 'components/filter/Filter';
 const App = () => {
   const dispatch = useDispatch()
   const filteredContacts = useSelector(getFilteredContacts)
+  console.log(filteredContacts)
 
   useEffect(() => {
     const getAllProducts = () => dispatch(getAllContactsThunk())
@@ -26,7 +27,7 @@ const App = () => {
       <h1 className={styles.title}>Contacts</h1>
       <Filter />
 
-      {filteredContacts.length > 0 && < ContactList />}
+      {filteredContacts?.length > 0 && < ContactList />}
 
     </div>
   );
