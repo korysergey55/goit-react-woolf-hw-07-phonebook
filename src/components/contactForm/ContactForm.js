@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import styles from './styles.module.css'
 
 import { useDispatch, useSelector } from 'react-redux';
-import { createContact, resetFilter } from 'redax/slice/slice';
+import { resetFilter } from 'redax/slice/slice';
+import { getContacts } from 'redax/selectors/selectors';
+import { postNewContactThink } from 'redax/thunks/thunks';
 
 import { toast } from 'react-toastify';
-import styles from './styles.module.css'
-import { getContacts } from 'redax/selectors/selectors';
 
 
 const ContactForm = () => {
@@ -13,7 +14,7 @@ const ContactForm = () => {
   const contacts = useSelector(getContacts)
   const [state, setState] = useState({ name: '', number: '' })
 
-  const createNewContact = (data) => {
+  const createNewContact = async (data) => {
     if (contacts?.some((contact) => contact.name.toLocaleLowerCase() === data.name.toLocaleLowerCase())) {
       toast.error(`This Name - ${data.name} already exist!`, {
         theme: 'colored',
@@ -26,8 +27,8 @@ const ContactForm = () => {
       })
       return;
     }
-    dispatch(createContact(data))
-    toast.success(`Contact - ${data.name} was successfuly created!`, {
+    dispatch(postNewContactThink(data))
+    toast.success(`Contact - '${data.name}' was successfuly created!`, {
       theme: 'colored',
     })
     dispatch(resetFilter())

@@ -1,16 +1,17 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redax/slice/slice';
-import { getFilteredContacts } from 'redax/selectors/selectors';
-
-import { toast } from 'react-toastify';
 import styles from './styles.module.css'
+import { toast } from 'react-toastify';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { getFilteredContacts } from 'redax/selectors/selectors';
+import { deleteContactThink } from 'redax/thunks/thunks';
 
 const ContactList = () => {
   const dispatch = useDispatch()
   const filteredContacts = useSelector(getFilteredContacts)
 
   const handleDelete = (id) => {
-    dispatch(deleteContact(id))
+    dispatch(deleteContactThink(id))
+
     toast.success(`Contact was successfuly deleted!`, {
       theme: 'colored',
     })

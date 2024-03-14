@@ -1,16 +1,21 @@
+import { useEffect } from 'react';
 import styles from './styles.module.css'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getFilteredContacts } from 'redax/selectors/selectors';
+import { getAllContactsThunk } from 'redax/thunks/thunks';
 
 import ContactForm from '../contactForm/ContactForm';
 import ContactList from 'components/contactList/ContactList';
 import Filter from 'components/filter/Filter';
-// import { getContactsAPI, createContactAPI, deleteContactAPI } from 'api/api';
-// createContactAPI()
-// deleteContactAPI('4')
-// getContactsAPI()
+
 const App = () => {
+  const dispatch = useDispatch()
   const filteredContacts = useSelector(getFilteredContacts)
+
+  useEffect(() => {
+    const getAllProducts = () => dispatch(getAllContactsThunk())
+    getAllProducts()
+  }, [dispatch])
 
   return (
     <div className={styles.container} >
