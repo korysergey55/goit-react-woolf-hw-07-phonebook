@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import styles from './styles.module.css'
+
 import { useDispatch, useSelector } from 'react-redux';
 import { getFilteredContacts } from 'redax/selectors/selectors';
 import { getAllContactsThunk } from 'redax/thunks/thunks';
@@ -11,7 +12,6 @@ import Filter from 'components/filter/Filter';
 const App = () => {
   const dispatch = useDispatch()
   const filteredContacts = useSelector(getFilteredContacts)
-  console.log(filteredContacts)
 
   useEffect(() => {
     const getAllProducts = () => dispatch(getAllContactsThunk())
@@ -27,7 +27,7 @@ const App = () => {
       <h1 className={styles.title}>Contacts</h1>
       <Filter />
 
-      {< ContactList />}
+      {filteredContacts && filteredContacts.length > 0 && <ContactList />}
 
     </div>
   );
