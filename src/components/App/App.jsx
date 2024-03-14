@@ -27,7 +27,7 @@ const App = () => {
       <h1 className={styles.title}>Contacts</h1>
       <Filter />
 
-      {filteredContacts?.length > 0 && < ContactList />}
+      {< ContactList />}
 
     </div>
   );
