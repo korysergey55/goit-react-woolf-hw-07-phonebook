@@ -12,6 +12,7 @@ import Filter from 'components/filter/Filter';
 const App = () => {
   const dispatch = useDispatch()
   const filteredContacts = useSelector(getFilteredContacts)
+  console.log(filteredContacts)
 
   useEffect(() => {
     dispatch(getAllContactsThunk())
