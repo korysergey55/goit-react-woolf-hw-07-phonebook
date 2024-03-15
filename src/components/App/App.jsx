@@ -14,8 +14,7 @@ const App = () => {
   const filteredContacts = useSelector(getFilteredContacts)
 
   useEffect(() => {
-    const getAllProducts = () => dispatch(getAllContactsThunk())
-    getAllProducts()
+    dispatch(getAllContactsThunk())
   }, [dispatch])
 
   return (
@@ -27,7 +26,7 @@ const App = () => {
       <h1 className={styles.title}>Contacts</h1>
       <Filter />
 
-      {filteredContacts && filteredContacts.length > 0 && <ContactList />}
+      {filteredContacts?.length > 0 && <ContactList />}
 
     </div>
   );

@@ -9,17 +9,6 @@ const persistConfigContacts = {
   blacklist: ['filter']
 }
 
-const persistConfigAuth = {
-  key: 'auth',
-  storage,
-  blacklist: ['contacts'],
-};
-
-const AuthReducer = (state = null, action) => {
-  return state
-}
-
 export const rootReducer = combineReducers({
   contacts: persistReducer(persistConfigContacts, phonebookReducer),
-  random: persistReducer(persistConfigAuth, AuthReducer)
 })
